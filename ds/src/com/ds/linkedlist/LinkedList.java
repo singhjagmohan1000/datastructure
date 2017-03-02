@@ -26,10 +26,10 @@ public class LinkedList {
         else{
             Node node=start;
             while(node.getNext()!=null){
-            System.out.println(node.getData());
+                System.out.print(" "+node.getData());
             node=node.getNext();
             }
-            System.out.println(node.getData());
+            System.out.println(" "+node.getData());
         }
 
     }
@@ -99,16 +99,78 @@ public class LinkedList {
 
     }
     public void deleteLinkAtStart(){
+        if(ifEmpty()){
+            System.out.println("List is already empty");
+        }
+        else{
+            Node temp=start;
+            start=start.getNext();
+            temp.setNext(null);
+        }
 
     }
     public void deleteLinkAtEnd(){
+        if(ifEmpty()){
+            System.out.println("List is empty");
+        }
+        else {
+            Node node = start;
+            if (node.getNext() == null) {
+                start=null;
+
+            } else {
+                while (node.getNext().getNext() != null)
+                    node = node.getNext();
+                node.setNext(null);
+            }
+        }
 
     }
     public void deleteLinkAtPosition(int pos){
+        if(ifEmpty()){
+            System.out.println("List Is Empty");
+        }
+        else{
+            int n=sizeOfLinkedList();
 
+            if(pos>n){
+                System.out.println("Size of list is :  "+n);
+            }
+            else{
+
+                if(pos==1 || pos==0)
+                    deleteLinkAtStart();
+                else{
+                        if (pos==n) {
+                            deleteLinkAtEnd();
+
+                        } else {
+                            Node node=start;
+                            for (int i = 1; i < pos - 1; i++) {
+                                node = node.getNext();
+                            }
+
+                            Node temp=node.getNext();
+                            node.setNext(temp.getNext());
+                            temp.setNext(null);
+
+                        }
+                    }
+                }
+            }
     }
-    public void nodeFromBehind(int pos){
 
+
+    public void nodeFromBehind(int pos){
+        Node node=start;
+        Node position=start;
+        for(int i=1;i<pos;i++)
+            node=node.getNext();
+        while(node.getNext()!=null){
+            node=node.getNext();
+            position=position.getNext();
+        }
+        System.out.println("Number at "+pos+" position from behind is : "+position.getData());
     }
 
     public static void main(String[] args) {
