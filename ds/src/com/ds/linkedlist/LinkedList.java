@@ -4,6 +4,7 @@ package com.ds.linkedlist;
  * Created by Gaggi on 2/26/17.
  */
 import java.util.*;
+import java.lang.Boolean;
 public class LinkedList {
 
     private Node start;
@@ -12,7 +13,7 @@ public class LinkedList {
         this.start=null;
     }
 
-    public Boolean ifEmpty(){
+    public boolean ifEmpty(){
 
         if(start==null)
             return true;
