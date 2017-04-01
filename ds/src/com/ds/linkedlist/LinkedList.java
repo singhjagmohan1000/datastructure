@@ -20,6 +20,20 @@ public class LinkedList {
         else
             return false;
     }
+    public void traverseList(Node node){
+        if(node==null){
+            System.out.println("List is Empty");
+        }
+        else{
+
+            while(node.getNext()!=null){
+                System.out.print(" "+node.getData());
+                node=node.getNext();
+            }
+            System.out.println(" "+node.getData());
+        }
+
+    }
     public void traverse(){
         if(ifEmpty()){
             System.out.println("List is Empty");
@@ -33,6 +47,9 @@ public class LinkedList {
             System.out.println(" "+node.getData());
         }
 
+    }
+    public Node getHead(){
+        return start;
     }
     public int sizeOfLinkedList(){
         Node node=start;
@@ -160,6 +177,7 @@ public class LinkedList {
                 }
             }
     }
+
 
 
     public void nodeFromBehind(int pos){
