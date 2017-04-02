@@ -3,7 +3,7 @@ package com.ds.linkedlist;
 /**
  * Created by gaggi on 4/1/17.
  */
-public class Stack {
+public class MyStack {
     int top = -1;
     int A[]=new int[50];
 
@@ -27,7 +27,7 @@ public class Stack {
 
     public void pop(){
         if(isEmpty()){
-            System.out.println("Stack is empty");
+            System.out.println("MyStack is empty");
         }
         else {
             System.out.print(" " + A[top]);
@@ -37,7 +37,7 @@ public class Stack {
     }
 
     public static void main(String[] args) {
-        Stack stack = new Stack();
+        MyStack stack = new MyStack();
         stack.push(1);
         System.out.println(stack.isEmpty());
         System.out.println(stack.getTop());
