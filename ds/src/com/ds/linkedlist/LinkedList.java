@@ -20,12 +20,12 @@ public class LinkedList {
         else
             return false;
     }
-    public void traverseList(Node node){
-        if(node==null){
+    public void traverseList(){
+        if(start==null){
             System.out.println("List is Empty");
         }
         else{
-
+            Node node = start;
             while(node.getNext()!=null){
                 System.out.print(" "+node.getData());
                 node=node.getNext();
@@ -34,6 +34,26 @@ public class LinkedList {
         }
 
     }
+    public void traverseRecursive(Node node){
+        if(node==null){
+            System.out.println(" ");
+            return;
+        }
+        else{
+            System.out.print(" "+node.getData());
+            traverseRecursive(node.getNext());
+        }
+    }
+    public void traverseReverseRecursive(Node node){
+        if(node==null){
+            return;
+        }
+        else{
+            traverseReverseRecursive(node.getNext());
+            System.out.print(" "+node.getData());
+        }
+    }
+
     public void traverse(){
         if(ifEmpty()){
             System.out.println("List is Empty");

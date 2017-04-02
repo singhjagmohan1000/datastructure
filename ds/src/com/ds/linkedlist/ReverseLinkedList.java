@@ -4,6 +4,7 @@ package com.ds.linkedlist;
  * Created by gaggi on 4/1/17.
  */
 public class ReverseLinkedList {
+  public  Node head;
 
     public Node reverseList(Node node){
         Node prev=null;
@@ -16,6 +17,17 @@ public class ReverseLinkedList {
         }
         return prev;
     }
+   public void reverseListRecursion(Node node){
+        if(node.getNext() == null){
+            head = node;
+            return;
+        }
+       reverseListRecursion(node.getNext());
+        Node temp = node.getNext();
+        temp.setNext(node);
+        node.setNext(null);
+
+   }
 
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
@@ -27,13 +39,17 @@ public class ReverseLinkedList {
         linkedList.addLinkAtStart(123);
         linkedList.addLinkAtStart(9);
         Node head = linkedList.getHead();
-        linkedList.traverseList(head);
+//        linkedList.traverseList(head);
+        linkedList.traverseRecursive(head);
 
 
         ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         Node rev = reverseLinkedList.reverseList(head);
-        System.out.println("********Linked Lsit after Reverse*****");
-        linkedList.traverseList(rev);
+        System.out.println("********Linked List after Reverse*****");
+        linkedList.traverseRecursive(rev);
+        System.out.println("********Linked List after another Reverse*****");
+        //linkedList.traverseReverseRecursive(rev);
+        reverseLinkedList.reverseListRecursion(head);
 
 
     }
