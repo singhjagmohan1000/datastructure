@@ -82,24 +82,45 @@ public class BinarySearchTree{
      * Find Minimum in Tree Using Iterative Approach
      * @return
      */
-    public  int findMinIterative(){
-        return -1;
+    public  int findMinIterative(BSTNode bstNode){
+        if(isEmpty(bstNode)){
+            return -1;}
+        else{
+            while(bstNode.getLeft()!=null){
+                bstNode=bstNode.getLeft();
+            }
+            return bstNode.getData();
+        }
     }
+
 
     /**
      * Find Minimum in Tree Using Recursive Approach
      * @return
      */
-    public  int findMinRecursive(){
+    public  int findMinRecursive(BSTNode bstNode) {
+    if(isEmpty(bstNode)){
         return -1;
+    }
+    else if(bstNode.getLeft()==null){
+        return bstNode.getData();
+    }
+    return  findMinRecursive(bstNode.getLeft());
     }
     /**
      * Find Maximum in Tree Using Iterative Approach
      * @return
      */
 
-    public  int findMaxIterative(){
-        return -1;
+    public  int findMaxIterative(BSTNode bstNode){
+        if(isEmpty(bstNode)){
+            return -1;}
+        else{
+            while(bstNode.getRight()!=null){
+                bstNode=bstNode.getRight();
+            }
+            return bstNode.getData();
+        }
     }
 
     /**
@@ -107,9 +128,15 @@ public class BinarySearchTree{
      * @return
      */
 
-    public  int findMaxRecursive(){
-        return -1;
-    }
+    public  int findMaxRecursive(BSTNode bstNode){
+        if(isEmpty(bstNode)){
+            return -1;}
+        else if(bstNode.getRight()==null) {
+
+               return bstNode.getData();
+            }
+            return findMaxRecursive(bstNode.getRight());
+        }
 
     /**
      * InOrder Traversal of a Tree
@@ -123,6 +150,19 @@ public class BinarySearchTree{
             inOrderTraversal(bstNode.getLeft());
             System.out.print(" "+bstNode.getData());
             inOrderTraversal(bstNode.getRight());
+        }
+    }
+
+    public int heightOfTree(BSTNode bstNode){
+        int leftHeight,rightHeight;
+        if(isEmpty(bstNode)){
+            return -1;
+        }
+        else{
+            leftHeight = heightOfTree(bstNode.getLeft());
+            rightHeight = heightOfTree(bstNode.getRight());
+            return Math.max(leftHeight,rightHeight)+1;
+
         }
     }
 
@@ -153,8 +193,16 @@ public class BinarySearchTree{
         System.out.println();
         System.out.println(" In Order Traversal");
         binarySearchTree.inOrderTraversal(bstNode);
-
-
+        System.out.println();
+        System.out.println(" Minimum in BST is: "+binarySearchTree.findMinIterative(bstNode));
+        System.out.println();
+        System.out.println(" Minimum in BST using Recursion is: "+binarySearchTree.findMinRecursive(bstNode));
+        System.out.println();
+        System.out.println(" Maximum in BST is: "+binarySearchTree.findMaxIterative(bstNode));
+        System.out.println();
+        System.out.println(" Maximum in BST using Recursion is: "+binarySearchTree.findMaxRecursive(bstNode));
+        System.out.println();
+        System.out.println(" Height of Tree is: "+binarySearchTree.heightOfTree(bstNode));
 
 
 
