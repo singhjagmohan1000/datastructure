@@ -1,5 +1,8 @@
 package com.ds.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by gaggi on 4/3/17.
  */
@@ -153,6 +156,14 @@ public class BinarySearchTree{
         }
     }
 
+    /**
+     * Height of Tree
+     * @param bstNode
+     * @return
+     */
+
+
+
     public int heightOfTree(BSTNode bstNode){
         int leftHeight,rightHeight;
         if(isEmpty(bstNode)){
@@ -166,6 +177,80 @@ public class BinarySearchTree{
         }
     }
 
+    /**
+     * Level Order Traversl
+     * Hint: Use Queue
+     * @param bstNode
+     */
+    public void levelOrderTraversal(BSTNode bstNode){
+    if(isEmpty(bstNode)){
+        System.out.println("Tree is Empty");
+    }
+    else{
+        Queue<BSTNode> queue = new LinkedList<BSTNode>();
+        queue.add(bstNode);
+        while(!queue.isEmpty()){
+            BSTNode node = queue.peek();
+            System.out.print(" "+node.getData());
+            if(node.getLeft()!=null)
+                queue.add(node.getLeft());
+            if (node.getRight()!=null)
+                queue.add(node.getRight());
+            queue.remove();
+
+        }
+
+
+
+    }
+
+
+    }
+
+    public boolean isBSTreeLesser(BSTNode bstNode,int data){
+        if(isEmpty(bstNode)){
+            return true;
+
+        }
+        if(bstNode.getData()<data && isBSTreeLesser(bstNode.getLeft(),data) && isBSTreeLesser(bstNode.getRight(),data))
+            return true;
+        else
+            return false;
+
+    }
+    public boolean isBSTreeGreater(BSTNode bstNode,int data){
+        if(isEmpty(bstNode)){
+            return true;
+        }
+        if(bstNode.getData()>data&&isBSTreeGreater(bstNode.getRight(),data)&&isBSTreeGreater(bstNode.getLeft(),data))
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * We can check if maximum of left subtree is less than root node and minimum from rightSubtree is more than root
+     * @param bstNode
+     * @return
+     */
+  public boolean isBSTree(BSTNode bstNode){
+
+      if(isEmpty(bstNode)){
+          return true;
+      }
+      if(isBSTreeLesser(bstNode.getLeft(),bstNode.getData())&&isBSTreeGreater(bstNode.getRight(),bstNode.getData())&&isBSTree(bstNode.getLeft())&&isBSTree(bstNode.getRight()))
+          return true;
+
+      else
+
+      return false;
+
+  }
+
+    /**
+     * Main Funcitons
+     * @param args
+     */
     public static void main(String[] args) {
         BinarySearchTree binarySearchTree = new BinarySearchTree();
         BSTNode bstNode=null;
@@ -203,6 +288,11 @@ public class BinarySearchTree{
         System.out.println(" Maximum in BST using Recursion is: "+binarySearchTree.findMaxRecursive(bstNode));
         System.out.println();
         System.out.println(" Height of Tree is: "+binarySearchTree.heightOfTree(bstNode));
+        System.out.println();
+        System.out.print(" Level Order Traversal  of Tree is: ");
+        binarySearchTree.levelOrderTraversal(bstNode);
+        System.out.println();
+        System.out.println(" Is Binary Tree: "+binarySearchTree.isBSTree(bstNode));
 
 
 
