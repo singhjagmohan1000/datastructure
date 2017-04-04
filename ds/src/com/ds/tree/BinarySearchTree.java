@@ -248,6 +248,20 @@ public class BinarySearchTree{
   }
 
     /**
+     * Optimized sol for checking if BST is valid or not
+     * @param bstNode
+     * @return
+     */
+    public boolean isValidBST(BSTNode bstNode) {
+    return isValidBST(bstNode, Long.MIN_VALUE, Long.MAX_VALUE);
+}
+
+    public boolean isValidBST(BSTNode bstNode, long minVal, long maxVal) {
+        if (bstNode == null) return true;
+        if (bstNode.getData() >= maxVal || bstNode.getData() <= minVal) return false;
+        return isValidBST(bstNode.getLeft(), minVal, bstNode.getData()) && isValidBST(bstNode.getRight(), bstNode.getData(), maxVal);
+    }
+    /**
      * Main Funcitons
      * @param args
      */
