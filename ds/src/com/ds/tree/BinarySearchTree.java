@@ -62,6 +62,11 @@ public class BinarySearchTree{
 
     }
 
+    /**
+     * PostOrder Traversal of a Tree
+     * @param bstNode
+     */
+
     public void postOrderTraversal(BSTNode bstNode){
         if(isEmpty(bstNode)){
             return;
@@ -73,18 +78,43 @@ public class BinarySearchTree{
         }
     }
 
+    /**
+     * Find Minimum in Tree Using Iterative Approach
+     * @return
+     */
     public  int findMinIterative(){
         return -1;
     }
+
+    /**
+     * Find Minimum in Tree Using Recursive Approach
+     * @return
+     */
     public  int findMinRecursive(){
         return -1;
     }
+    /**
+     * Find Maximum in Tree Using Iterative Approach
+     * @return
+     */
+
     public  int findMaxIterative(){
         return -1;
     }
+
+    /**
+     * Find Maximum in Tree Using Recursive Approach
+     * @return
+     */
+
     public  int findMaxRecursive(){
         return -1;
     }
+
+    /**
+     * InOrder Traversal of a Tree
+     * @param bstNode
+     */
     public void inOrderTraversal(BSTNode bstNode){
         if(isEmpty(bstNode)){
             return;
