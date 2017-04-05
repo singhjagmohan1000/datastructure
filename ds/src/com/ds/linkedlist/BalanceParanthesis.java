@@ -37,6 +37,6 @@ public class BalanceParanthesis {
 
     public static void main(String[] args) {
         BalanceParanthesis balanceParanthesis = new BalanceParanthesis();
-        System.out.println(balanceParanthesis.checkBalance("{[({})}]}"));
+        System.out.println(balanceParanthesis.checkBalance("[](){}aa"));
     }
 }

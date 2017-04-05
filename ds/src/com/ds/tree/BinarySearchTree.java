@@ -248,6 +248,63 @@ public class BinarySearchTree{
   }
 
     /**
+     * Recursive Method findLCANode will return the least common ancestor node
+     * @param bstNode
+     * @param node1
+     * @param node2
+     * @return
+     */
+
+  public BSTNode findLCANode(BSTNode bstNode,int node1,int node2){
+
+      if(bstNode.getData()>Math.max(node1,node2))
+          return findLCANode(bstNode.getLeft(),node1,node2);
+      else if (bstNode.getData()<Math.min(node1,node2))
+          return findLCANode(bstNode.getRight(),node1,node2);
+      else
+          return bstNode;
+
+  }
+
+  public int findPath(BSTNode bstNode,int node){
+
+      if(bstNode.getData()==node){
+          return 0;
+      }
+      else{
+          if(bstNode.getData()<node)
+              return findPath(bstNode.getRight(),node)+1;
+          else
+              return findPath(bstNode.getLeft(),node)+1;
+      }
+
+  }
+    /**
+     * Find distance between two nodes by first get the common node and then count the edges between common node to that node
+     * @param bstNode
+     * @return
+     */
+
+  public int distanceBetweenNodes(BSTNode bstNode,int node1,int node2){
+
+      if(bstNode == null){
+          System.out.println("Tree is Empty");
+          return -2;
+      }
+
+      BSTNode temp;
+
+
+      temp = findLCANode(bstNode,node1,node2);
+      System.out.println(temp.getData());
+      int x = findPath(temp,node1);
+      int y = findPath(temp,node2);
+      System.out.println(x+"       "+y);
+
+      return x+y;
+  }
+
+    /**
      * Optimized sol for checking if BST is valid or not
      * @param bstNode
      * @return
@@ -307,6 +364,9 @@ public class BinarySearchTree{
         binarySearchTree.levelOrderTraversal(bstNode);
         System.out.println();
         System.out.println(" Is Binary Tree: "+binarySearchTree.isBSTree(bstNode));
+        System.out.println(" Distance between two nodes: ");
+        System.out.println(binarySearchTree.distanceBetweenNodes(bstNode,18,10));
+
 
 
 
