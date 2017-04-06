@@ -7,6 +7,7 @@ import java.util.Queue;
  * Created by gaggi on 4/3/17.
  */
 public class BinarySearchTree{
+    int count=0;
 
     public boolean isEmpty(BSTNode bstNode){
         if(bstNode == null)
@@ -95,7 +96,38 @@ public class BinarySearchTree{
             return bstNode.getData();
         }
     }
+    public  BSTNode findMin(BSTNode bstNode) {
+        if(isEmpty(bstNode)){
+            return null;
+        }
+        else if(bstNode.getLeft()==null){
+            return bstNode;
+        }
+        return  findMin(bstNode.getLeft());
+    }
 
+    /**
+     * Search Node for given data
+     * @param bstNode
+     * @param data
+     * @return
+     */
+    public BSTNode searchNode(BSTNode bstNode,int data){
+
+        if(bstNode==null){
+            System.out.println("s");
+            return bstNode;
+        }
+        if(data<bstNode.getData()){
+           return searchNode(bstNode.getLeft(),data);
+        }
+        else if(data>bstNode.getData())
+            return searchNode(bstNode.getRight(),data);
+        else
+            if(data==bstNode.getData())
+                return bstNode;
+        return bstNode;
+    }
 
     /**
      * Find Minimum in Tree Using Recursive Approach
@@ -171,6 +203,7 @@ public class BinarySearchTree{
         }
         else{
             leftHeight = heightOfTree(bstNode.getLeft());
+            System.out.print("  "+count++);
             rightHeight = heightOfTree(bstNode.getRight());
             return Math.max(leftHeight,rightHeight)+1;
 
@@ -318,6 +351,96 @@ public class BinarySearchTree{
         if (bstNode.getData() >= maxVal || bstNode.getData() <= minVal) return false;
         return isValidBST(bstNode.getLeft(), minVal, bstNode.getData()) && isValidBST(bstNode.getRight(), bstNode.getData(), maxVal);
     }
+
+    /**
+     * Find Succesor of Node in InOrder following two cases
+     * CASE 1: Right Child then find min from right tree
+     * CASE 2: IF No Right Child then immediate ancestor not visited
+     * @param bstNode
+     * @param data
+     * @return
+     */
+
+    public BSTNode successorNode(BSTNode bstNode,int data){
+
+
+
+        if(bstNode ==null ){
+            return null;
+        }
+        else{BSTNode node= searchNode(bstNode,data);
+            if(node!=null){
+            if(node.getRight()!=null){
+                return findMin(node.getRight());
+            }
+            else{
+                BSTNode successor = null ;
+                BSTNode ancestor = bstNode;
+                while(ancestor!=node){
+                    if(node.getData() < ancestor.getData())
+                    {successor = ancestor;
+                    ancestor = ancestor.getLeft();}
+                    else
+                        ancestor=ancestor.getRight();
+
+
+                }
+                return successor;
+            }
+        }
+
+            else return null;
+        }
+    }
+
+    /**
+     * Delete a node in bst there are 3 cases,
+     * Case 1 No Child
+     * Case 2 Single Child
+     *      make left or right node as target node which is not null
+     * Case 2 Two Children
+     *          Find min from right or max from left and make that the target node
+     * @param bstNode
+     * @param data
+     * @return
+     */
+
+    public BSTNode deleteNode(BSTNode bstNode,int data){
+
+        if(bstNode == null)
+            return null;
+        else if(data < bstNode.getData())
+                bstNode.setLeft(deleteNode(bstNode.getLeft(),data));
+        else if(data > bstNode.getData())
+            bstNode.setRight(deleteNode(bstNode.getRight(),data));
+        else{
+            //NO Child
+            if(bstNode.getLeft()==null && bstNode.getRight()==null){
+                bstNode=null;
+                return bstNode;
+            }
+            else if(bstNode.getRight()==null){
+                bstNode = bstNode.getLeft();
+                return bstNode;
+            }
+            else if(bstNode.getLeft()==null){
+                bstNode = bstNode.getRight();
+                return bstNode;
+            }
+            else{
+                System.out.print(bstNode.getData());
+                BSTNode node = findMin(bstNode.getRight());
+                System.out.print(node.getData());
+                bstNode.setData(node.getData());
+                bstNode.setRight(deleteNode(bstNode.getRight(),node.getData()));
+
+
+
+            }
+
+        }
+        return  bstNode;
+    }
     /**
      * Main Funcitons
      * @param args
@@ -325,22 +448,32 @@ public class BinarySearchTree{
     public static void main(String[] args) {
         BinarySearchTree binarySearchTree = new BinarySearchTree();
         BSTNode bstNode=null;
-        bstNode = binarySearchTree.insertNode(bstNode,15);
-        bstNode = binarySearchTree.insertNode(bstNode,21);
-        bstNode = binarySearchTree.insertNode(bstNode,12);
-        bstNode = binarySearchTree.insertNode(bstNode,17);
-        bstNode = binarySearchTree.insertNode(bstNode,13);
-        bstNode = binarySearchTree.insertNode(bstNode,14);
-        bstNode = binarySearchTree.insertNode(bstNode,16);
         bstNode = binarySearchTree.insertNode(bstNode,5);
+        bstNode = binarySearchTree.insertNode(bstNode,3);
         bstNode = binarySearchTree.insertNode(bstNode,8);
-        bstNode = binarySearchTree.insertNode(bstNode,10);
-        bstNode = binarySearchTree.insertNode(bstNode,6);
-        bstNode = binarySearchTree.insertNode(bstNode,-5);
-        bstNode = binarySearchTree.insertNode(bstNode,19);
-        bstNode = binarySearchTree.insertNode(bstNode,18);
-        bstNode = binarySearchTree.insertNode(bstNode,1);
         bstNode = binarySearchTree.insertNode(bstNode,2);
+        bstNode = binarySearchTree.insertNode(bstNode,4);
+        bstNode = binarySearchTree.insertNode(bstNode,7);
+        bstNode = binarySearchTree.insertNode(bstNode,9);
+
+//        bstNode = binarySearchTree.insertNode(bstNode,15);
+//        bstNode = binarySearchTree.insertNode(bstNode,21);
+//        bstNode = binarySearchTree.insertNode(bstNode,12);
+//        bstNode = binarySearchTree.insertNode(bstNode,17);
+//        bstNode = binarySearchTree.insertNode(bstNode,13);
+//        bstNode = binarySearchTree.insertNode(bstNode,14);
+//        bstNode = binarySearchTree.insertNode(bstNode,16);
+//        bstNode = binarySearchTree.insertNode(bstNode,5);
+//        bstNode = binarySearchTree.insertNode(bstNode,8);
+//        bstNode = binarySearchTree.insertNode(bstNode,10);
+//        bstNode = binarySearchTree.insertNode(bstNode,6);
+//        bstNode = binarySearchTree.insertNode(bstNode,-5);
+//        bstNode = binarySearchTree.insertNode(bstNode,20);
+//        bstNode = binarySearchTree.insertNode(bstNode,18);
+//        bstNode = binarySearchTree.insertNode(bstNode,19);
+//
+//        bstNode = binarySearchTree.insertNode(bstNode,1);
+//        bstNode = binarySearchTree.insertNode(bstNode,2);
         System.out.println(" Pre Order Traversal");
         binarySearchTree.preOrderTraversal(bstNode);
         System.out.println();
@@ -366,6 +499,14 @@ public class BinarySearchTree{
         System.out.println(" Is Binary Tree: "+binarySearchTree.isBSTree(bstNode));
         System.out.println(" Distance between two nodes: ");
         System.out.println(binarySearchTree.distanceBetweenNodes(bstNode,18,10));
+        bstNode = binarySearchTree.deleteNode(bstNode,17);
+        System.out.println(" Pre Order Traversal");
+        binarySearchTree.preOrderTraversal(bstNode);
+        System.out.println();
+        System.out.println(" In Order Traversal");
+        binarySearchTree.inOrderTraversal(bstNode);
+        System.out.println();
+        System.out.println("Successor of current node is: "+binarySearchTree.successorNode(bstNode,10).getData());
 
 
 
