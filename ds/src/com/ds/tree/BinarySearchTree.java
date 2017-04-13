@@ -428,9 +428,9 @@ public class BinarySearchTree{
                 return bstNode;
             }
             else{
-                System.out.print(bstNode.getData());
+
                 BSTNode node = findMin(bstNode.getRight());
-                System.out.print(node.getData());
+
                 bstNode.setData(node.getData());
                 bstNode.setRight(deleteNode(bstNode.getRight(),node.getData()));
 

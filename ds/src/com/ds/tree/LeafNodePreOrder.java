@@ -25,7 +25,7 @@ public class LeafNodePreOrder {
 
     public static void main(String[] args) {
         LeafNodePreOrder leafNode = new LeafNodePreOrder();
-        int a[] = {5,3,2,4,8,7,9};
+        int a[] = {12,7,6,8,9,16,13,12,14,18};
         leafNode.printLeafNode(a);
     }
 }
