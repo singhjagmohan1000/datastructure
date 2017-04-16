@@ -29,6 +29,24 @@ public class ReverseLinkedList {
 
    }
 
+   Node reverseListPairs(Node head){
+       Node node;
+
+       if(head==null || head.getNext()==null){
+           return head;
+       }
+       else{
+           node = head.getNext();
+           head.setNext(node.getNext());
+           node.setNext(head);
+           head=node;
+
+           head.getNext().setNext(reverseListPairs(head.getNext().getNext()));
+
+           return head;
+       }
+   }
+
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.addLinkAtStart(43);
@@ -39,17 +57,20 @@ public class ReverseLinkedList {
         linkedList.addLinkAtStart(123);
         linkedList.addLinkAtStart(9);
         Node head = linkedList.getHead();
-//        linkedList.traverseList(head);
+       //linkedList.traverseList(head);
         linkedList.traverseRecursive(head);
 
 
         ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
-        Node rev = reverseLinkedList.reverseList(head);
+        head = reverseLinkedList.reverseList(head);
         System.out.println("********Linked List after Reverse*****");
-        linkedList.traverseRecursive(rev);
-        System.out.println("********Linked List after another Reverse*****");
+        //linkedList.traverseRecursive(rev);
+       // System.out.println("********Linked List after another Reverse*****");
         //linkedList.traverseReverseRecursive(rev);
-        reverseLinkedList.reverseListRecursion(head);
+        //reverseLinkedList.reverseListRecursion(head);
+        linkedList.traverseRecursive(head);
+        Node rp = reverseLinkedList.reverseListPairs(head);
+        linkedList.traverseRecursive(rp);
 
 
     }
