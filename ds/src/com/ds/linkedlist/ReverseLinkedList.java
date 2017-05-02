@@ -49,13 +49,12 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
-        linkedList.addLinkAtStart(43);
-        linkedList.addLinkAtStart(12);
-        linkedList.addLinkAtStart(34);
-        linkedList.addLinkAtStart(90);
-        linkedList.addLinkAtStart(67);
-        linkedList.addLinkAtStart(123);
-        linkedList.addLinkAtStart(9);
+        linkedList.addLinkAtStart(1);
+        linkedList.addLinkAtStart(2);
+        linkedList.addLinkAtStart(3);
+        linkedList.addLinkAtStart(4);
+        linkedList.addLinkAtStart(5);
+        linkedList.addLinkAtStart(6);
         Node head = linkedList.getHead();
        //linkedList.traverseList(head);
         linkedList.traverseRecursive(head);
