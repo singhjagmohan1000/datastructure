@@ -456,6 +456,8 @@ public class BinarySearchTree{
         bstNode = binarySearchTree.insertNode(bstNode,7);
         bstNode = binarySearchTree.insertNode(bstNode,9);
 
+        System.out.println("hi"+ binarySearchTree.distanceBetweenNodes(bstNode,4,8));
+
 //        bstNode = binarySearchTree.insertNode(bstNode,15);
 //        bstNode = binarySearchTree.insertNode(bstNode,21);
 //        bstNode = binarySearchTree.insertNode(bstNode,12);
@@ -474,43 +476,43 @@ public class BinarySearchTree{
 //
 //        bstNode = binarySearchTree.insertNode(bstNode,1);
 //        bstNode = binarySearchTree.insertNode(bstNode,2);
-        System.out.println(" Pre Order Traversal");
-        binarySearchTree.preOrderTraversal(bstNode);
-        System.out.println();
-        System.out.println(" Post Order Traversal");
-        binarySearchTree.postOrderTraversal(bstNode);
-        System.out.println();
-        System.out.println(" In Order Traversal");
-        binarySearchTree.inOrderTraversal(bstNode);
-        System.out.println();
-        System.out.println(" Minimum in BST is: "+binarySearchTree.findMinIterative(bstNode));
-        System.out.println();
-        System.out.println(" Minimum in BST using Recursion is: "+binarySearchTree.findMinRecursive(bstNode));
-        System.out.println();
-        System.out.println(" Maximum in BST is: "+binarySearchTree.findMaxIterative(bstNode));
-        System.out.println();
-        System.out.println(" Maximum in BST using Recursion is: "+binarySearchTree.findMaxRecursive(bstNode));
-        System.out.println();
-        System.out.println(" Height of Tree is: "+binarySearchTree.heightOfTree(bstNode));
-        System.out.println();
-        System.out.print(" Level Order Traversal  of Tree is: ");
-        binarySearchTree.levelOrderTraversal(bstNode);
-        System.out.println();
-        System.out.println(" Is Binary Tree: "+binarySearchTree.isBSTree(bstNode));
-        System.out.println(" Distance between two nodes: ");
-        System.out.println(binarySearchTree.distanceBetweenNodes(bstNode,18,10));
-        bstNode = binarySearchTree.deleteNode(bstNode,17);
-        System.out.println(" Pre Order Traversal");
-        binarySearchTree.preOrderTraversal(bstNode);
-        System.out.println();
-        System.out.println(" In Order Traversal");
-        binarySearchTree.inOrderTraversal(bstNode);
-        System.out.println();
-        System.out.println("Successor of current node is: "+binarySearchTree.successorNode(bstNode,10).getData());
-
-
-
-
+//        System.out.println(" Pre Order Traversal");
+//        binarySearchTree.preOrderTraversal(bstNode);
+//        System.out.println();
+//        System.out.println(" Post Order Traversal");
+//        binarySearchTree.postOrderTraversal(bstNode);
+//        System.out.println();
+//        System.out.println(" In Order Traversal");
+//        binarySearchTree.inOrderTraversal(bstNode);
+//        System.out.println();
+//        System.out.println(" Minimum in BST is: "+binarySearchTree.findMinIterative(bstNode));
+//        System.out.println();
+//        System.out.println(" Minimum in BST using Recursion is: "+binarySearchTree.findMinRecursive(bstNode));
+//        System.out.println();
+//        System.out.println(" Maximum in BST is: "+binarySearchTree.findMaxIterative(bstNode));
+//        System.out.println();
+//        System.out.println(" Maximum in BST using Recursion is: "+binarySearchTree.findMaxRecursive(bstNode));
+//        System.out.println();
+//        System.out.println(" Height of Tree is: "+binarySearchTree.heightOfTree(bstNode));
+//        System.out.println();
+//        System.out.print(" Level Order Traversal  of Tree is: ");
+//        binarySearchTree.levelOrderTraversal(bstNode);
+//        System.out.println();
+//        System.out.println(" Is Binary Tree: "+binarySearchTree.isBSTree(bstNode));
+//        System.out.println(" Distance between two nodes: ");
+//        System.out.println(binarySearchTree.distanceBetweenNodes(bstNode,18,10));
+//        bstNode = binarySearchTree.deleteNode(bstNode,17);
+//        System.out.println(" Pre Order Traversal");
+//        binarySearchTree.preOrderTraversal(bstNode);
+//        System.out.println();
+//        System.out.println(" In Order Traversal");
+//        binarySearchTree.inOrderTraversal(bstNode);
+//        System.out.println();
+//        System.out.println("Successor of current node is: "+binarySearchTree.successorNode(bstNode,10).getData());
+//
+//
+//
+//
 
 
 
